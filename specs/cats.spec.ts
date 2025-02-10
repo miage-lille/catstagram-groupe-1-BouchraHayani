@@ -1,6 +1,6 @@
 import * as fc from 'fast-check';
 import { getCmd, getModel, ActionCmd, RunCmd } from 'redux-loop';
-import reducer, { counterSelector, getSelectedPicture, picturesSelector } from '../src/reducer';
+import { reducer, counterSelector, getSelectedPicture, picturesSelector } from '../src/reducer';
 import { fetchCatsCommit, fetchCatsRollback } from '../src/actions';
 import 'fp-ts-jest-matchers';
 import {

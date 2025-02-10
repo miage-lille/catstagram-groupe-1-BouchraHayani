@@ -5,13 +5,19 @@ import { FetchCatsRequest } from './types/actions.type';
 export const cmdFetch = (action: FetchCatsRequest) =>
   Cmd.run(
     () => {
-      return fetch(action.path, {
-        method: action.method,
-      }).then(checkStatus);
+      return fetch(action.path, { method: action.method })
+        .then(checkStatus)
+        .then((response) => response.json())
+        .then((data) => data.hits.map((hit: any) => ({
+          previewFormat: hit.previewURL,
+          webFormat: hit.webformatURL,
+          author: hit.user,
+          largeFormat: hit.largeImageURL,
+        })));
     },
     {
-      successActionCreator: fetchCatsCommit, // (equals to (payload) => fetchCatsCommit(payload))
-      failActionCreator: fetchCatsRollback, // (equals to (error) => fetchCatsCommit(error))
+      successActionCreator: fetchCatsCommit,
+      failActionCreator: fetchCatsRollback,
     },
   );
 
