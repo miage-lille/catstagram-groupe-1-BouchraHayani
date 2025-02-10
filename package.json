@@ -5,9 +5,11 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "catstagram": "file:",
     "fp-ts": "^2.13.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
